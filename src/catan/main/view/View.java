@@ -34,6 +34,7 @@ public abstract class View extends JFrame implements Settings {
     private boolean wasPreviouslyInFullScreenMode = false; // A flag which tells us whether the view was previously in fullscreen or not.
     private Dimension dimensionsPriorToFullScreenMode; // A Dimension object whose role is to retain the size of the View prior to maximising it to fullscreen.
 
+    private JPanel backgroundPanel = null;
 
     // Constructors of the class.
     public View(int option){
@@ -71,11 +72,17 @@ public abstract class View extends JFrame implements Settings {
 
     }
 
+    // Getter methods of the class.
+    public JPanel getBackgroundPanel() {return this.backgroundPanel;}
+
     // Private/helper methods of the class.
     private void setFrameBackground(){
 
         try {
-            this.getContentPane().add(new BackgroundPanel());
+
+            this.backgroundPanel = new BackgroundPanel();
+            this.backgroundPanel.setMinimumSize(new Dimension(INITIAL_SCREEN_WIDTH, INITIAL_SCREEN_HEIGHT));
+            this.getContentPane().add(this.backgroundPanel);
         } catch (IOException exception) {
             exception.printStackTrace();
         }
@@ -252,8 +259,8 @@ public abstract class View extends JFrame implements Settings {
         // Constructor of the class.
         public BackgroundPanel() throws IOException {
 
-            this.backgroundImage = rescale(ImageIO.read(new File(System.getProperty("user.dir") +
-                    "/src/catan/main/static/catan.jpeg")), INITIAL_SCREEN_WIDTH, INITIAL_SCREEN_HEIGHT);
+            this.backgroundImage = ImageIO.read(new File(System.getProperty("user.dir") +
+                    "/src/catan/main/static/catan-initial-size.jpg"));
 
         }
 
