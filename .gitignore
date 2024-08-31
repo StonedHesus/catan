@@ -31,3 +31,6 @@ buildSrc
 
 # Intelliji
 .idea
+
+# Maven
+target
