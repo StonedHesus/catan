@@ -1,0 +1,14 @@
+<project>
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>pai.catan</groupId>
+	<artifactId>catan</artifactId>
+	<version>1.0-SNAPSHOT</version>
+
+	<name>Catan</name>
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<maven.compiler.release>17</maven.compiler.release>
+	</properties>
+</project>
